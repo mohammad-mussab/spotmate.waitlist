@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotmate - Join the Waitlist</title>
+    <meta name="description" content="Join Spotmate and never play alone again. Find activity partners in your city.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="nav-logo">
+                    <img src="logo.png" alt="Spotmate" class="nav-logo-img">
+                    <span>Spotmate</span>
+                </a>
+
+                <div class="nav-links">
+                    <a href="#app-preview" class="nav-link">Preview</a>
+                    <a href="#trust-safety" class="nav-link">Safety</a>
+                    <a href="#join-form" class="nav-btn">Join Waitlist</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="logo-container">
+                    <img src="logo.png" alt="Spotmate" class="logo">
+                </div>
+
+                <h1 class="hero-title">Find Your Perfect Activity Partner</h1>
+
+                <p class="hero-subtitle">
+                    Join the waitlist and be the first to know when Spotmate launches in your city
+                </p>
+
+                <div class="counter-container">
+                    <div class="counter">
+                        <span class="counter-number" id="totalCount">0</span>
+                        <span class="counter-label">People Waiting</span>
+                    </div>
+                </div>
+
+                <a href="#join-form" class="scroll-arrow">
+                    <span>Join the Waitlist</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview Section -->
+    <section class="app-preview" id="app-preview">
+        <div class="container">
+            <h2 class="section-title">See It In Action</h2>
+            <p class="section-subtitle">Real people, real activities, real connections</p>
+
+            <div class="phone-mockup">
+                <div class="phone-frame">
+                    <img src="images/Screenshot_2026-01-18-02-42-25-398_com.spotmate.app.jpg" alt="Spotmate App Feed" class="phone-screen">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Form Section -->
+    <section class="waitlist-section" id="join-form">
+        <div class="container">
+            <div class="form-card">
+                <div class="form-header">
+                    <h2 class="form-title">Join the Waitlist</h2>
+                    <p class="form-description">Get early access when we launch in your city</p>
+                </div>
+
+                <form id="waitlistForm" class="waitlist-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="John Doe"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="john@example.com"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <div class="select-wrapper">
+                                <select id="country" name="country" required>
+                                    <option value="">Select your country</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <div class="select-wrapper">
+                                <select id="city" name="city" required disabled>
+                                    <option value="">Select country first</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="area">Area / Neighborhood</label>
+                        <input
+                            type="text"
+                            id="area"
+                            name="area"
+                            placeholder="e.g., DHA Phase 5, Downtown, etc."
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="whatsapp">
+                            WhatsApp Number
+                            <span class="optional-badge">Optional</span>
+                        </label>
+                        <div class="phone-input-wrapper">
+                            <select id="phoneCountryCode" class="country-code-select">
+                                <option value="+92">🇵🇰 +92</option>
+                                <option value="+1">🇺🇸 +1</option>
+                                <option value="+44">🇬🇧 +44</option>
+                                <option value="+91">🇮🇳 +91</option>
+                                <option value="+971">🇦🇪 +971</option>
+                                <option value="+966">🇸🇦 +966</option>
+                                <option value="+86">🇨🇳 +86</option>
+                                <option value="+61">🇦🇺 +61</option>
+                                <option value="+81">🇯🇵 +81</option>
+                            </select>
+                            <input
+                                type="tel"
+                                id="whatsapp"
+                                name="whatsapp"
+                                placeholder="3001234567"
+                                pattern="[0-9]{10,15}"
+                                class="phone-input"
+                            >
+                        </div>
+                        <small class="form-hint">Get notified instantly on WhatsApp when your city launches</small>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">Join Waitlist</span>
+                        <span class="btn-loader" style="display: none;">
+                            <svg class="spinner" viewBox="0 0 50 50">
+                                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                            </svg>
+                        </span>
+                    </button>
+                </form>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <div class="success-icon">✓</div>
+                    <h3>You're on the list!</h3>
+                    <p>We'll notify you when Spotmate launches in <strong><span id="userCity"></span></strong></p>
+                    <p class="city-count"><span id="cityCount"></span> people from your city are waiting</p>
+                </div>
+
+                <!-- Error Message -->
+                <div id="errorMessage" class="error-message" style="display: none;">
+                    <p id="errorText"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+
+            <div class="features-grid">
+                <div class="phone-mockup-small">
+                    <div class="phone-frame-small">
+                        <img src="images/Screenshot_2026-01-18-02-31-53-410_com.spotmate.app.jpg" alt="Post Your Activity" class="phone-screen">
+                    </div>
+                </div>
+
+                <div class="phone-mockup-small">
+                    <div class="phone-frame-small">
+                        <img src="images/Screenshot_2026-01-18-02-32-11-410_com.spotmate.app.jpg" alt="Someone Joins You" class="phone-screen">
+                    </div>
+                </div>
+
+                <div class="phone-mockup-small">
+                    <div class="phone-frame-small">
+                        <img src="images/Screenshot_2026-01-18-02-32-17-827_com.spotmate.app.jpg" alt="Unlock Your City" class="phone-screen">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Safety Section -->
+    <section class="trust-safety" id="trust-safety">
+        <div class="container">
+            <h2 class="section-title">Safe. Verified. Focused on Activities.</h2>
+            <p class="section-subtitle">Built for genuine activity partners, not dating</p>
+
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="trust-icon">✓</div>
+                    <h3>Verified Profiles Only</h3>
+                    <p>Every user must verify their identity before accessing the app. Unverified users cannot view or post activities.</p>
+                </div>
+
+                <div class="trust-card">
+                    <div class="trust-icon">🛡️</div>
+                    <h3>Activity-Focused Platform</h3>
+                    <p>This is NOT a dating app. Spotmate is exclusively for finding activity partners - sports, fitness, hobbies, and recreation only.</p>
+                </div>
+
+                <div class="trust-card">
+                    <div class="trust-icon">⚠️</div>
+                    <h3>Report & Block Features</h3>
+                    <p>Inappropriate behavior leads to immediate account removal. We take safety seriously and maintain a zero-tolerance policy.</p>
+                </div>
+            </div>
+
+            <div class="trust-badge">
+                <p>All profiles display verification status. You'll always know who you're connecting with.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="activities">
+        <div class="container">
+            <h2 class="section-title">Popular Activities</h2>
+            <div class="activity-tags">
+                <div class="activity-tag">Tennis</div>
+                <div class="activity-tag">Cricket</div>
+                <div class="activity-tag">Football</div>
+                <div class="activity-tag">Badminton</div>
+                <div class="activity-tag">Gym</div>
+                <div class="activity-tag">Running</div>
+                <div class="activity-tag">Cycling</div>
+                <div class="activity-tag">Swimming</div>
+                <div class="activity-tag">Basketball</div>
+                <div class="activity-tag">Yoga</div>
+                <div class="activity-tag">Hiking</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- City Unlock Section -->
+    <section class="city-unlock">
+        <div class="container">
+            <div class="unlock-card">
+                <h2>How It Works</h2>
+                <p>We launch in cities when they hit 1,000 signups</p>
+                <p><strong>Your city could be next!</strong></p>
+                <p class="unlock-cta">Join the waitlist and invite your friends to unlock your city faster</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-tagline">Find your perfect activity partner</p>
+            <p class="footer-contact">Questions? <a href="mailto:team.spotmate@gmail.com">team.spotmate@gmail.com</a></p>
+            <p class="footer-copyright">© 2026 Spotmate. Built with care.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
