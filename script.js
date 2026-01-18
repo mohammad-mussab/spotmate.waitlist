@@ -14,6 +14,16 @@ const errorMessage = document.getElementById('errorMessage');
 const errorText = document.getElementById('errorText');
 const totalCountElement = document.getElementById('totalCount');
 
+// City Progress Elements
+const citySearchSelect = document.getElementById('citySearch');
+const cityProgressDisplay = document.getElementById('cityProgressDisplay');
+const selectedCityName = document.getElementById('selectedCityName');
+const currentCount = document.getElementById('currentCount');
+const progressBar = document.getElementById('progressBar');
+const progressPercentage = document.getElementById('progressPercentage');
+const progressMessage = document.getElementById('progressMessage');
+const leaderboardList = document.getElementById('leaderboardList');
+
 // State
 let countries = [];
 let selectedCountryCode = '';
@@ -149,6 +159,141 @@ async function getCityWaitlistCount(city) {
     }
 }
 
+// City Progress Functions
+async function loadCitiesWithSignups() {
+    try {
+        // Get all unique cities with their counts
+        const { data, error } = await supabaseClient
+            .from('waitlist')
+            .select('city, country_name');
+
+        if (error) throw error;
+
+        // Count signups per city
+        const cityMap = new Map();
+        data.forEach(entry => {
+            const key = `${entry.city}, ${entry.country_name}`;
+            cityMap.set(key, (cityMap.get(key) || 0) + 1);
+        });
+
+        // Convert to array and sort alphabetically
+        const cities = Array.from(cityMap.entries())
+            .map(([cityCountry, count]) => {
+                const [city, country] = cityCountry.split(', ');
+                return { city, country, count };
+            })
+            .sort((a, b) => a.city.localeCompare(b.city));
+
+        // Populate dropdown
+        citySearchSelect.innerHTML = '<option value="">Select a city to see progress</option>';
+        cities.forEach(item => {
+            const option = document.createElement('option');
+            option.value = JSON.stringify({ city: item.city, country: item.country });
+            option.textContent = `${item.city}, ${item.country}`;
+            citySearchSelect.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error('Error loading cities:', error);
+        citySearchSelect.innerHTML = '<option value="">Failed to load cities</option>';
+    }
+}
+
+async function showCityProgress(city, country) {
+    try {
+        const count = await getCityWaitlistCount(city);
+        const percentage = Math.min((count / 1000) * 100, 100);
+        const remaining = Math.max(1000 - count, 0);
+
+        // Update display
+        selectedCityName.textContent = city;
+        currentCount.textContent = count.toLocaleString();
+
+        // Animate progress bar
+        setTimeout(() => {
+            progressBar.style.width = `${percentage}%`;
+            progressPercentage.textContent = `${Math.round(percentage)}%`;
+        }, 100);
+
+        // Update message based on progress
+        if (count >= 1000) {
+            progressMessage.textContent = '🎉 This city is ready to launch!';
+            progressMessage.classList.add('close');
+        } else if (count >= 900) {
+            progressMessage.textContent = `🔥 Only ${remaining.toLocaleString()} more signups to unlock!`;
+            progressMessage.classList.add('close');
+        } else if (count >= 500) {
+            progressMessage.textContent = `Halfway there! ${remaining.toLocaleString()} more to go.`;
+            progressMessage.classList.remove('close');
+        } else {
+            progressMessage.textContent = `${remaining.toLocaleString()} signups needed to unlock this city.`;
+            progressMessage.classList.remove('close');
+        }
+
+        // Show display
+        cityProgressDisplay.style.display = 'block';
+
+    } catch (error) {
+        console.error('Error showing city progress:', error);
+    }
+}
+
+async function loadLeaderboard() {
+    try {
+        leaderboardList.innerHTML = '<div class="leaderboard-loading">Loading leaderboard...</div>';
+
+        // Get all cities with counts
+        const { data, error } = await supabaseClient
+            .from('waitlist')
+            .select('city, country_name');
+
+        if (error) throw error;
+
+        // Count signups per city
+        const cityMap = new Map();
+        data.forEach(entry => {
+            const key = `${entry.city}|||${entry.country_name}`;
+            cityMap.set(key, (cityMap.get(key) || 0) + 1);
+        });
+
+        // Convert to array and sort by count
+        const cities = Array.from(cityMap.entries())
+            .map(([key, count]) => {
+                const [city, country] = key.split('|||');
+                return { city, country, count };
+            })
+            .sort((a, b) => b.count - a.count)
+            .slice(0, 3); // Top 3
+
+        if (cities.length === 0) {
+            leaderboardList.innerHTML = '<div class="leaderboard-loading">No cities yet. Be the first!</div>';
+            return;
+        }
+
+        // Render leaderboard
+        const medals = ['🥇', '🥈', '🥉'];
+        leaderboardList.innerHTML = '';
+
+        cities.forEach((city, index) => {
+            const item = document.createElement('div');
+            item.className = `leaderboard-item rank-${index + 1}`;
+            item.innerHTML = `
+                <div class="rank-badge">${medals[index]}</div>
+                <div class="city-info">
+                    <div class="city-name">${city.city}</div>
+                    <div class="city-country">${city.country}</div>
+                </div>
+                <div class="signup-count">${city.count.toLocaleString()}</div>
+            `;
+            leaderboardList.appendChild(item);
+        });
+
+    } catch (error) {
+        console.error('Error loading leaderboard:', error);
+        leaderboardList.innerHTML = '<div class="leaderboard-loading">Failed to load leaderboard</div>';
+    }
+}
+
 async function submitWaitlist(formData) {
     showLoading(true);
     errorMessage.style.display = 'none';
@@ -195,6 +340,10 @@ async function submitWaitlist(formData) {
         // Update total count
         await getTotalWaitlistCount();
 
+        // Refresh city progress and leaderboard
+        await loadCitiesWithSignups();
+        await loadLeaderboard();
+
         // Show success
         showSuccess(formData.city, cityCount);
 
@@ -214,6 +363,21 @@ countrySelect.addEventListener('change', async (e) => {
     } else {
         citySelect.innerHTML = '<option value="">Select a country first</option>';
         citySelect.disabled = true;
+    }
+});
+
+// City Progress Event Listener
+citySearchSelect.addEventListener('change', async (e) => {
+    if (!e.target.value) {
+        cityProgressDisplay.style.display = 'none';
+        return;
+    }
+
+    try {
+        const { city, country } = JSON.parse(e.target.value);
+        await showCityProgress(city, country);
+    } catch (error) {
+        console.error('Error parsing city selection:', error);
     }
 });
 
@@ -270,6 +434,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     await fetchCountries();
     await getTotalWaitlistCount();
 
-    // Refresh count every 30 seconds
-    setInterval(getTotalWaitlistCount, 30000);
+    // Load city progress section
+    await loadCitiesWithSignups();
+    await loadLeaderboard();
+
+    // Refresh counts and leaderboard every 30 seconds
+    setInterval(async () => {
+        await getTotalWaitlistCount();
+        await loadLeaderboard();
+    }, 30000);
 });

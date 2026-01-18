@@ -84,6 +84,57 @@
         </div>
     </section>
 
+    <!-- City Progress Section -->
+    <section class="city-progress" id="city-progress">
+        <div class="container">
+            <h2 class="section-title">Race to 1,000 Signups</h2>
+            <p class="section-subtitle">Check your city's progress and see the leaderboard</p>
+
+            <!-- City Checker -->
+            <div class="progress-checker">
+                <div class="checker-header">
+                    <label for="citySearch">Check Your City</label>
+                    <div class="select-wrapper">
+                        <select id="citySearch" class="city-search-select">
+                            <option value="">Select a city to see progress</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Progress Display (hidden until city selected) -->
+                <div id="cityProgressDisplay" class="city-progress-display" style="display: none;">
+                    <div class="progress-header">
+                        <h3 id="selectedCityName">Lahore</h3>
+                        <div class="progress-stats">
+                            <span class="current-count" id="currentCount">0</span>
+                            <span class="divider">/</span>
+                            <span class="target-count">1,000</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progressBar">
+                            <span class="progress-percentage" id="progressPercentage">0%</span>
+                        </div>
+                    </div>
+                    <p class="progress-message" id="progressMessage">Only 1,000 more signups to unlock!</p>
+                </div>
+            </div>
+
+            <!-- Leaderboard -->
+            <div class="leaderboard">
+                <h3 class="leaderboard-title">🏆 Top Cities</h3>
+                <div class="leaderboard-list" id="leaderboardList">
+                    <div class="leaderboard-loading">Loading leaderboard...</div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="progress-cta">
+                <p>Help your city reach the top! Share with friends and unlock Spotmate faster.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Waitlist Form Section -->
     <section class="waitlist-section" id="join-form">
         <div class="container">
@@ -208,6 +259,7 @@
     <section class="features">
         <div class="container">
             <h2 class="section-title">How It Works</h2>
+            <p class="swipe-hint">Swipe to see more →</p>
 
             <div class="features-grid">
                 <div class="phone-mockup-small">
@@ -234,8 +286,13 @@
     <!-- Trust & Safety Section -->
     <section class="trust-safety" id="trust-safety">
         <div class="container">
-            <h2 class="section-title">Safe. Verified. Focused on Activities.</h2>
+            <h2 class="section-title trust-title">
+                <span class="highlight">Safe</span> •
+                <span class="highlight">Verified</span> •
+                <span class="highlight">Focused on Activities</span>
+            </h2>
             <p class="section-subtitle">Built for genuine activity partners, not dating</p>
+            <p class="swipe-hint trust-swipe-hint">Swipe to see more →</p>
 
             <div class="trust-grid">
                 <div class="trust-card">
@@ -258,6 +315,7 @@
             </div>
 
             <div class="trust-badge">
+                <div class="trust-badge-icon">✓</div>
                 <p>All profiles display verification status. You'll always know who you're connecting with.</p>
             </div>
         </div>
@@ -287,7 +345,6 @@
     <section class="city-unlock">
         <div class="container">
             <div class="unlock-card">
-                <h2>How It Works</h2>
                 <p>We launch in cities when they hit 1,000 signups</p>
                 <p><strong>Your city could be next!</strong></p>
                 <p class="unlock-cta">Join the waitlist and invite your friends to unlock your city faster</p>
