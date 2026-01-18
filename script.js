@@ -185,7 +185,7 @@ async function loadCitiesWithSignups() {
             .sort((a, b) => a.city.localeCompare(b.city));
 
         // Populate dropdown
-        citySearchSelect.innerHTML = '<option value="">Select a city to see progress</option>';
+        citySearchSelect.innerHTML = '<option value="">Select a city</option>';
         cities.forEach(item => {
             const option = document.createElement('option');
             option.value = JSON.stringify({ city: item.city, country: item.country });

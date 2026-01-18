@@ -370,16 +370,16 @@ body {
 
 /* City Progress Section */
 .city-progress {
-    padding: var(--spacing-xxl) 0;
+    padding: var(--spacing-xl) 0;
     background: var(--bg-primary);
     border-top: 1px solid var(--border-color);
 }
 
 .progress-checker {
     max-width: 700px;
-    margin: 0 auto var(--spacing-xl);
+    margin: 0 auto var(--spacing-lg);
     background: var(--bg-card);
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
@@ -389,12 +389,12 @@ body {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
 }
 
 .checker-header label {
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-primary);
 }
 
@@ -517,18 +517,18 @@ body {
 /* Leaderboard */
 .leaderboard {
     max-width: 700px;
-    margin: 0 auto var(--spacing-xl);
+    margin: 0 auto var(--spacing-lg);
     background: var(--bg-card);
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 .leaderboard-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--text-primary);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
     text-align: center;
     font-weight: 700;
 }
@@ -536,7 +536,7 @@ body {
 .leaderboard-list {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
 }
 
 .leaderboard-loading {
@@ -611,7 +611,7 @@ body {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     background: var(--bg-secondary);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
@@ -619,7 +619,7 @@ body {
 
 .progress-cta p {
     color: var(--text-primary);
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 500;
     margin: 0;
 }
@@ -954,7 +954,7 @@ body {
     font-size: clamp(2rem, 4vw, 2.8rem);
     font-weight: 700;
     text-align: center;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
     color: var(--text-primary);
 }
 
@@ -1317,16 +1317,16 @@ body {
     }
 
     .nav-links {
-        gap: var(--spacing-sm);
+        gap: 0.6rem;
     }
 
     .nav-link {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .nav-btn {
-        padding: 8px 14px;
-        font-size: 0.85rem;
+        padding: 8px 12px;
+        font-size: 0.8rem;
     }
 
     .hero {
@@ -1466,6 +1466,19 @@ body {
 
     .hero-title {
         font-size: 1.75rem !important;
+    }
+
+    .nav-links {
+        gap: 0.4rem;
+    }
+
+    .nav-link {
+        font-size: 0.75rem;
+    }
+
+    .nav-btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
     }
 
     .phone-mockup-small {
