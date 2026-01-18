@@ -158,7 +158,8 @@ body {
     position: relative;
     background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     overflow: hidden;
-    padding-top: 80px;
+    padding-top: 100px;
+    padding-bottom: var(--spacing-lg);
 }
 
 .hero::before {
@@ -188,17 +189,17 @@ body {
 
 /* Logo - Circular Design */
 .logo-container {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
     opacity: 0;
     animation: fadeInDown 0.6s ease 0.2s forwards;
 }
 
 .logo {
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     border-radius: var(--radius-full);
     background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
-    padding: 1.5rem;
+    padding: 1.2rem;
     box-shadow:
         0 0 0 4px var(--bg-primary),
         0 0 0 6px var(--border-color),
@@ -213,14 +214,15 @@ body {
 
 /* Typography */
 .hero-title {
-    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
     font-weight: 800;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
     background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     letter-spacing: -0.02em;
+    line-height: 1.1;
     opacity: 0;
     animation: heroTitleReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
     transform-origin: center;
@@ -230,7 +232,7 @@ body {
     font-size: clamp(1.1rem, 2.5vw, 1.5rem);
     color: var(--text-secondary);
     max-width: 600px;
-    margin: 0 auto var(--spacing-xl);
+    margin: 0 auto var(--spacing-lg);
     font-weight: 400;
     opacity: 0;
     animation: fadeInUp 0.6s ease 0.6s forwards;
@@ -240,7 +242,7 @@ body {
 .counter-container {
     opacity: 0;
     animation: fadeInUp 0.6s ease 0.8s forwards;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .counter {
