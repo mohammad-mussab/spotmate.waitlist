@@ -204,10 +204,9 @@
                     <div class="form-group">
                         <label for="whatsapp">
                             WhatsApp Number
-                            <span class="optional-badge">Optional</span>
                         </label>
                         <div class="phone-input-wrapper">
-                            <select id="phoneCountryCode" class="country-code-select">
+                            <select id="phoneCountryCode" class="country-code-select" required>
                                 <option value="+92">🇵🇰 +92</option>
                                 <option value="+1">🇺🇸 +1</option>
                                 <option value="+44">🇬🇧 +44</option>
@@ -225,6 +224,7 @@
                                 placeholder="3001234567"
                                 pattern="[0-9]{10,15}"
                                 class="phone-input"
+                                required
                             >
                         </div>
                         <small class="form-hint">Get notified instantly on WhatsApp when your city launches</small>

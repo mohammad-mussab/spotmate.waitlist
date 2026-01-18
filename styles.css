@@ -213,7 +213,7 @@ body {
 
 /* Typography */
 .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(3rem, 8vw, 5.5rem);
     font-weight: 800;
     margin-bottom: var(--spacing-md);
     background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
@@ -222,7 +222,8 @@ body {
     background-clip: text;
     letter-spacing: -0.02em;
     opacity: 0;
-    animation: fadeInUp 0.6s ease 0.4s forwards;
+    animation: heroTitleReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+    transform-origin: center;
 }
 
 .hero-subtitle {
@@ -763,7 +764,7 @@ body {
 }
 
 .country-code-select {
-    flex: 0 0 130px;
+    flex: 0 0 110px;
     padding: 1rem;
     background: var(--bg-secondary);
     border: 2px solid var(--border-color);
@@ -1290,6 +1291,17 @@ body {
     to { opacity: 1; }
 }
 
+@keyframes heroTitleReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .features:not(.activities) .features-grid {
@@ -1346,7 +1358,7 @@ body {
     }
 
     .hero-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
         line-height: 1.2;
         margin-bottom: var(--spacing-lg);
     }
@@ -1465,7 +1477,7 @@ body {
     }
 
     .hero-title {
-        font-size: 1.75rem !important;
+        font-size: 2rem !important;
     }
 
     .nav-links {
@@ -1496,20 +1508,6 @@ body {
 
     .phone-frame-small {
         width: 260px;
-    }
-
-    .phone-input-wrapper {
-        flex-direction: column;
-        gap: var(--spacing-sm);
-    }
-
-    .country-code-select {
-        flex: 1;
-        width: 100%;
-    }
-
-    .phone-input {
-        width: 100%;
     }
 
     .form-row {

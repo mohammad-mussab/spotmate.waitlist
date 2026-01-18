@@ -387,7 +387,7 @@ form.addEventListener('submit', async (e) => {
     const whatsappInput = document.getElementById('whatsapp').value.trim();
     const phoneCountryCode = document.getElementById('phoneCountryCode').value;
 
-    // Build WhatsApp number if provided
+    // Build WhatsApp number (now required)
     let whatsappNumber = null;
     if (whatsappInput) {
         // Remove any non-digit characters
@@ -420,8 +420,12 @@ form.addEventListener('submit', async (e) => {
         return;
     }
 
-    // WhatsApp validation (if provided)
-    if (whatsappInput && !whatsappNumber) {
+    // WhatsApp validation (required)
+    if (!whatsappInput) {
+        showError('WhatsApp number is required.');
+        return;
+    }
+    if (!whatsappNumber) {
         showError('Please enter a valid phone number (10-15 digits).');
         return;
     }
