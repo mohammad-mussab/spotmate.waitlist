@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child Safety Standards - Spotmate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #B4FF00;
+            --bg-primary: #0D0D0D;
+            --bg-secondary: #171717;
+            --bg-card: #1F1F1F;
+            --text-primary: #FFFFFF;
+            --text-secondary: #999999;
+            --border-color: #2A2A2A;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --radius-md: 1rem;
+            --radius-lg: 1.5rem;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .last-updated {
+            display: inline-block;
+            background: var(--bg-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: var(--spacing-xl);
+            margin-bottom: var(--spacing-md);
+            padding-left: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        p, li {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        ul li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -0.2rem;
+        }
+
+        .highlight-box {
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--primary);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        .contact-box {
+            background: var(--bg-secondary);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--spacing-xl);
+            border: 2px solid var(--border-color);
+        }
+
+        .contact-box h3 {
+            margin-top: 0;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: var(--spacing-md) 1rem;
+            }
+
+            .container {
+                padding: var(--spacing-lg);
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <div class="logo-img"></div>
+                <span style="font-size: 1.5rem; font-weight: 700;">Spotmate</span>
+            </div>
+            <h1>Child Safety Standards</h1>
+            <p class="subtitle">Our commitment to preventing child sexual abuse and exploitation</p>
+            <span class="last-updated">Last Updated: January 19, 2026</span>
+        </div>
+
+        <h2>1. Age Restrictions</h2>
+        <div class="highlight-box">
+            <p><strong>Spotmate is strictly an 18+ platform.</strong> Users must be 18 years of age or older to create an account and use our services. We do not knowingly collect, maintain, or use personal information from children under 18.</p>
+        </div>
+        <p>Age verification measures include:</p>
+        <ul>
+            <li>Mandatory age confirmation during account registration</li>
+            <li>Identity verification through government-issued ID (required before accessing the platform)</li>
+            <li>Automated detection systems to flag suspicious accounts</li>
+            <li>Immediate account termination for users found to be under 18</li>
+        </ul>
+
+        <h2>2. Child Sexual Abuse Material (CSAM) Prevention</h2>
+        <p>Spotmate has a zero-tolerance policy for child sexual abuse material (CSAM) and child exploitation. We are committed to preventing, detecting, and reporting any such content on our platform.</p>
+
+        <h3>Detection & Prevention</h3>
+        <ul>
+            <li><strong>Automated scanning:</strong> All uploaded images are scanned using industry-standard CSAM detection technology before being published</li>
+            <li><strong>Hash matching:</strong> We utilize PhotoDNA and other hash-matching databases to detect known CSAM</li>
+            <li><strong>AI content moderation:</strong> Machine learning models flag potentially inappropriate content for human review</li>
+            <li><strong>Profile verification:</strong> Mandatory identity verification ensures all users are verified adults</li>
+        </ul>
+
+        <h3>Human Review</h3>
+        <ul>
+            <li>Dedicated content moderation team reviews flagged content 24/7</li>
+            <li>All user reports are investigated within 24 hours</li>
+            <li>Suspicious accounts are immediately suspended pending investigation</li>
+        </ul>
+
+        <h2>3. Reporting & Response Procedures</h2>
+
+        <h3>In-App Reporting</h3>
+        <p>Users can report concerning content or behavior directly within the app:</p>
+        <ul>
+            <li>Report button available on every user profile and post</li>
+            <li>Report categories include: "Underage user," "Inappropriate content," "Sexual exploitation," "Harassment"</li>
+            <li>Anonymous reporting to protect reporter identity</li>
+            <li>Immediate notification to moderation team</li>
+        </ul>
+
+        <h3>Emergency Response</h3>
+        <p>For verified CSAM or child exploitation:</p>
+        <ul>
+            <li><strong>Immediate action:</strong> Content removed and account permanently banned within minutes</li>
+            <li><strong>Evidence preservation:</strong> All relevant data preserved for law enforcement</li>
+            <li><strong>Law enforcement notification:</strong> Report filed with National Center for Missing & Exploited Children (NCMEC) within 24 hours</li>
+            <li><strong>IP & device tracking:</strong> User identification information shared with authorities</li>
+        </ul>
+
+        <h2>4. Cooperation with Law Enforcement</h2>
+        <p>Spotmate fully cooperates with law enforcement agencies investigating child exploitation cases:</p>
+        <ul>
+            <li>Designated Law Enforcement Response Team available 24/7</li>
+            <li>Compliance with all legal data preservation requests</li>
+            <li>Proactive reporting to NCMEC (U.S.) and equivalent agencies worldwide</li>
+            <li>Participation in industry coalitions fighting online child exploitation</li>
+        </ul>
+
+        <h2>5. User Safety Features</h2>
+        <p>Additional safety measures built into Spotmate:</p>
+        <ul>
+            <li><strong>Verified profiles only:</strong> All users display verification status; unverified users cannot interact</li>
+            <li><strong>Report & Block:</strong> Users can instantly report and block suspicious accounts</li>
+            <li><strong>Activity-focused platform:</strong> Spotmate is designed for sports and activity partners only, not dating or social networking</li>
+            <li><strong>Public activity posts:</strong> All meetups are activity-based and transparent</li>
+            <li><strong>No private messaging before match:</strong> Users can only chat after both parties confirm interest in the same activity</li>
+        </ul>
+
+        <h2>6. Staff Training & Compliance</h2>
+        <ul>
+            <li>All staff receive mandatory child safety training</li>
+            <li>Regular updates on CSAM detection techniques and legal requirements</li>
+            <li>Compliance with COPPA (Children's Online Privacy Protection Act)</li>
+            <li>Adherence to international child protection laws including GDPR-K (children's privacy)</li>
+        </ul>
+
+        <h2>7. Continuous Improvement</h2>
+        <p>We regularly review and update our child safety practices:</p>
+        <ul>
+            <li>Quarterly security audits</li>
+            <li>Regular technology updates to improve CSAM detection</li>
+            <li>Collaboration with child safety organizations</li>
+            <li>User feedback integration for improved reporting mechanisms</li>
+        </ul>
+
+        <h2>8. Reporting to Authorities</h2>
+        <p>Spotmate complies with mandatory reporting requirements in all jurisdictions where we operate:</p>
+        <ul>
+            <li><strong>United States:</strong> Reports filed with NCMEC via CyberTipline</li>
+            <li><strong>European Union:</strong> Reports to national hotlines and Europol</li>
+            <li><strong>Other jurisdictions:</strong> Reports to relevant national authorities as required by local law</li>
+        </ul>
+
+        <div class="highlight-box">
+            <p><strong>Legal Compliance:</strong> Spotmate complies with all relevant child safety laws including but not limited to: 18 U.S.C. § 2258A (reporting requirements), COPPA, GDPR, and regional child protection legislation.</p>
+        </div>
+
+        <div class="contact-box">
+            <h3>Contact Information</h3>
+            <p><strong>Designated Child Safety Contact:</strong></p>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:team.spotmate@gmail.com">team.spotmate@gmail.com</a></p>
+                <p>Subject Line: "Child Safety Concern - Urgent"</p>
+                <p>Response Time: Within 24 hours for all child safety reports</p>
+            </div>
+
+            <p style="margin-top: 1.5rem;"><strong>Emergency Law Enforcement Contact:</strong></p>
+            <div class="contact-info">
+                <p>For immediate law enforcement requests regarding active threats to child safety, contact us at the email above with subject "LAW ENFORCEMENT - URGENT"</p>
+            </div>
+
+            <p style="margin-top: 1.5rem;"><strong>Report to Authorities Directly:</strong></p>
+            <div class="contact-info">
+                <p>U.S.: <a href="https://report.cybertip.org/" target="_blank">NCMEC CyberTipline</a></p>
+                <p>International: Contact your local law enforcement or child protection agency</p>
+            </div>
+        </div>
+
+        <div style="margin-top: var(--spacing-xl); padding-top: var(--spacing-lg); border-top: 2px solid var(--border-color);">
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                This document is publicly available and cannot be edited. For questions about our child safety practices, please contact <a href="mailto:team.spotmate@gmail.com" style="color: var(--primary);">team.spotmate@gmail.com</a>
+            </p>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; margin-top: 1rem;">
+                © 2026 Spotmate. All rights reserved.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
