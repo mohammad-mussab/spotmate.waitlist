@@ -433,6 +433,32 @@ form.addEventListener('submit', async (e) => {
     await submitWaitlist(formData);
 });
 
+// FAQ Accordion Functionality
+function initializeFAQ() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const faqItem = question.closest('.faq-item');
+            const isActive = faqItem.classList.contains('active');
+
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Toggle current FAQ item
+            if (isActive) {
+                faqItem.classList.remove('active');
+            } else {
+                faqItem.classList.add('active');
+            }
+        });
+    });
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', async () => {
     await fetchCountries();
@@ -441,6 +467,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Load city progress section
     await loadCitiesWithSignups();
     await loadLeaderboard();
+
+    // Initialize FAQ accordion
+    initializeFAQ();
 
     // Refresh counts and leaderboard every 30 seconds
     setInterval(async () => {
