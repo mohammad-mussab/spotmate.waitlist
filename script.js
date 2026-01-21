@@ -459,6 +459,36 @@ function initializeFAQ() {
     });
 }
 
+// Mobile Menu Toggle
+function initializeMobileMenu() {
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    }
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', async () => {
     await fetchCountries();
@@ -470,6 +500,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Initialize FAQ accordion
     initializeFAQ();
+
+    // Initialize mobile menu
+    initializeMobileMenu();
 
     // Refresh counts and leaderboard every 30 seconds
     setInterval(async () => {

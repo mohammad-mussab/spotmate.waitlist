@@ -149,6 +149,97 @@ body {
     box-shadow: 0 4px 15px rgba(180, 255, 0, 0.3);
 }
 
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 2px;
+    background: var(--primary);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(13, 13, 13, 0.98);
+        backdrop-filter: blur(20px);
+        padding: var(--spacing-lg) 0;
+        gap: 0;
+        border-bottom: 1px solid var(--border-color);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links.active {
+        max-height: 400px;
+        opacity: 1;
+    }
+
+    .nav-link,
+    .nav-btn {
+        width: 100%;
+        text-align: center;
+        padding: var(--spacing-md);
+        border-bottom: 1px solid var(--border-color);
+        font-size: 1rem;
+    }
+
+    .nav-btn {
+        background: none;
+        color: var(--primary);
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .nav-btn:hover {
+        background: rgba(180, 255, 0, 0.1);
+        transform: none;
+    }
+
+    .nav-link:hover {
+        background: rgba(180, 255, 0, 0.05);
+    }
+
+    .nav-link:last-child,
+    .nav-btn:last-child {
+        border-bottom: none;
+    }
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -231,9 +322,10 @@ body {
 .hero-subtitle {
     font-size: clamp(1.1rem, 2.5vw, 1.5rem);
     color: var(--text-secondary);
-    max-width: 600px;
-    margin: 0 auto var(--spacing-lg);
+    max-width: 700px;
+    margin: 0 auto var(--spacing-md);
     font-weight: 400;
+    line-height: 1.6;
     opacity: 0;
     animation: fadeInUp 0.6s ease 0.6s forwards;
 }
@@ -1048,6 +1140,218 @@ body {
     height: auto;
 }
 
+/* ==========================================
+   How It Works Section
+   ========================================== */
+
+.how-it-works-section {
+    padding: var(--spacing-xxl) 0;
+    background: var(--bg-primary);
+    position: relative;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: var(--spacing-xl);
+}
+
+.how-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
+.how-step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.how-step-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: left;
+}
+
+.how-step-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(180, 255, 0, 0.1);
+}
+
+.how-step-card:hover::before {
+    transform: scaleX(1);
+}
+
+.step-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-bottom: var(--spacing-md);
+    background: linear-gradient(135deg, rgba(180, 255, 0, 0.1) 0%, rgba(180, 255, 0, 0.05) 100%);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.how-step-card:hover .step-icon-wrapper {
+    background: linear-gradient(135deg, rgba(180, 255, 0, 0.2) 0%, rgba(180, 255, 0, 0.1) 100%);
+    transform: scale(1.05);
+}
+
+.step-icon {
+    width: 40px;
+    height: 40px;
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.how-step-card:hover .step-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(180, 255, 0, 0.5));
+}
+
+.step-number {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    color: var(--bg-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(180, 255, 0, 0.4);
+}
+
+.how-step-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    transition: color 0.3s ease;
+}
+
+.how-step-card:hover h3 {
+    color: var(--primary);
+}
+
+.how-step-card > p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+    font-size: 1rem;
+}
+
+.step-example {
+    background: rgba(180, 255, 0, 0.05);
+    border-left: 3px solid var(--primary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    margin-top: var(--spacing-md);
+}
+
+.example-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.example-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Mobile Responsive for How It Works */
+@media (max-width: 768px) {
+    .how-steps-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .how-step-card {
+        padding: var(--spacing-lg);
+    }
+
+    .step-icon-wrapper {
+        width: 70px;
+        height: 70px;
+    }
+
+    .step-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .how-step-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .how-step-card > p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .how-step-card {
+        padding: var(--spacing-md);
+    }
+
+    .step-icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+
+    .step-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .how-step-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .how-step-card > p {
+        font-size: 0.9rem;
+    }
+
+    .step-example {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .example-label {
+        font-size: 0.8rem;
+    }
+
+    .example-text {
+        font-size: 0.85rem;
+    }
+}
+
 /* Activities Section */
 .activities {
     padding: var(--spacing-xxl) 0;
@@ -1264,6 +1568,7 @@ body {
     .hero-subtitle {
         font-size: 1rem;
         line-height: 1.5;
+        margin-bottom: var(--spacing-lg);
     }
 
     .counter-number {
@@ -1309,6 +1614,11 @@ body {
 
     .hero-title {
         font-size: 2rem !important;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: var(--spacing-lg);
     }
 
     .nav-links {
